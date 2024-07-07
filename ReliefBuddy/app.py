@@ -1,36 +1,24 @@
-import os
-import sys
 import random
 import json
 import pickle
 import numpy as np
 import nltk
+import sys
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 import streamlit as st
 
-@st.cache_resource
-def download_nltk_data():
-    nltk.download('punkt')
-    nltk.download('wordnet')
-    nltk.download('omw-1.4')
-    return True
-
-# Download NLTK data if not already present
-download_nltk_data()
+nltk.download('punkt')
+nltk.download('wordnet')
 
 sys.stdout.reconfigure(encoding='utf-8')
 
 lemmatizer = WordNetLemmatizer()
+model = load_model('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/chatbot_model.h5')
 
-# Adjust the file path as needed
-model_path = os.path.join(os.path.dirname(__file__), 'chatbot_model.h5')
-model = load_model(model_path)
-
-intents_path = os.path.join(os.path.dirname(__file__), 'intents.json')
-intents = json.loads(open(intents_path, encoding='utf-8').read())
-words = pickle.load(open(os.path.join(os.path.dirname(__file__), 'words.pkl'), 'rb'))
-classes = pickle.load(open(os.path.join(os.path.dirname(__file__), 'classes.pkl'), 'rb'))
+intents = json.loads(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/intents.json', encoding='utf-8').read())
+words = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/words.pkl', 'rb'))
+classes = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/classes.pkl', 'rb'))
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
@@ -75,8 +63,8 @@ def main():
     user_input = st.text_input("You: ", "")
 
     if user_input:
-        intents = predict_class(user_input)
-        response = get_response(intents, intents)
+        predicted_intents = predict_class(user_input)
+        response = get_response(predicted_intents, intents)
         st.text_area("ReliefBuddy:", response, height=200)
 
 if __name__ == "__main__":
