@@ -1,4 +1,3 @@
-from flask import Flask, request, jsonify, render_template
 import random
 import json
 import pickle
@@ -7,27 +6,15 @@ import nltk
 import sys
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
+import streamlit as st
 
 sys.stdout.reconfigure(encoding='utf-8')
-app = Flask(__name__)
 
 lemmatizer = WordNetLemmatizer()
 model = load_model('chatbot_model.h5')
-intents = json.loads(open('intents.json').read())
+intents = json.loads(open('intents.json', encoding='utf-8').read())
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/get_response', methods=['POST'])
-def get_response_route():
-    data = request.get_json()
-    message = data['message']
-    ints = predict_class(message)
-    res = get_response(ints, intents)
-    return jsonify({'response': res})
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
@@ -65,6 +52,16 @@ def get_response(intents_list, intents_json):
             break
     return result
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+def main():
+    st.title("ReliefBuddy - AI Mental Support Chatbot")
+    st.write("Welcome to ReliefBuddy. How can I help you today?")
 
+    user_input = st.text_input("You: ", "")
+
+    if user_input:
+        intents = predict_class(user_input)
+        response = get_response(intents, intents)
+        st.text_area("ReliefBuddy:", response, height=200)
+
+if __name__ == "__main__":
+    main()
