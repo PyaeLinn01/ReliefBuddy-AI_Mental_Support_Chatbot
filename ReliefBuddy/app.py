@@ -8,15 +8,8 @@ from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 import streamlit as st
 
-@st.cache_resource
-def download_nltk_data():
-    nltk.download('punkt')
-    nltk.download('wordnet')
-    nltk.download('omw-1.4')
-    return True
-
-# Download NLTK data if not already present
-download_nltk_data()
+nltk.download('punkt')
+nltk.download('wordnet')
 
 sys.stdout.reconfigure(encoding='utf-8')
 
