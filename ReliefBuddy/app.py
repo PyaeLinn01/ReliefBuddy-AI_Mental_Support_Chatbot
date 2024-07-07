@@ -3,27 +3,29 @@ import json
 import pickle
 import numpy as np
 import nltk
-nltk.download('punkt')
-nltk.download('wordnet')
+import sys
+from nltk.stem import WordNetLemmatizer
+from tensorflow.keras.models import load_model
 import streamlit as st
 
-from nltk.stem import WordNetLemmatizer
-from keras.models import load_model
+nltk.download('punkt')
+nltk.download('wordnet')
+
+sys.stdout.reconfigure(encoding='utf-8')
 
 lemmatizer = WordNetLemmatizer()
-intents = json.loads(open('./intents.json').read())
+model = load_model('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/chatbot_model.h5')
 
-words = pickle.load(open('words.pkl', 'rb'))
-classes = pickle.load(open('classes.pkl', 'rb'))
-model = load_model('chatbot_model.h5')
-
+intents = json.loads(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/intents.json', encoding='utf-8').read())
+words = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/words.pkl', 'rb'))
+classes = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/classes.pkl', 'rb'))
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
+    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
 
-def bag_of_words (sentence):
+def bag_of_words(sentence):
     sentence_words = clean_up_sentence(sentence)
     bag = [0] * len(words)
     for w in sentence_words:
@@ -32,46 +34,38 @@ def bag_of_words (sentence):
                 bag[i] = 1
     return np.array(bag)
 
-def predict_class (sentence):
-    bow = bag_of_words (sentence)
+def predict_class(sentence):
+    bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
     ERROR_THRESHOLD = 0.25
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
-
     results.sort(key=lambda x: x[1], reverse=True)
     return_list = []
     for r in results:
-        return_list.append({'intent': classes [r[0]], 'probability': str(r[1])})
+        return_list.append({'intent': classes[r[0]], 'probability': str(r[1])})
     return return_list
 
 def get_response(intents_list, intents_json):
+    if not intents_list:
+        return "I'm sorry, that's not clear to me."
     tag = intents_list[0]['intent']
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
         if i['tag'] == tag:
-            result = random.choice (i['responses'])
+            result = random.choice(i['responses'])
             break
     return result
 
-# deploy on streamlit
+def main():
+    st.title("ReliefBuddy - AI Mental Support Chatbot")
+    st.write("Welcome to ReliefBuddy. How can I help you today?")
 
-st.title("Your AI companion to reduce stress and answer mental health questions <3")
+    user_input = st.text_input("You: ", "")
 
-st.write("Hi there! How can I accompany you?")
+    if user_input:
+        predicted_intents = predict_class(user_input)
+        response = get_response(predicted_intents, intents)
+        st.text_area("ReliefBuddy:", response, height=200)
 
-message = st.text_input("You: ", "")
-
-if message:
-    ints = predict_class(message)
-    res = get_response(ints, intents)
-    st.text_area("Bot:", value=res, height=100, max_chars=None, key=None)
-
-
-# print("GO! Bot is running!")
-
-# while True:
-#     message = input("")
-#     ints = predict_class (message)
-#     res = get_response (ints, intents)
-#     print (res)
-    
+if __name__ == "__main__":
+    main()
