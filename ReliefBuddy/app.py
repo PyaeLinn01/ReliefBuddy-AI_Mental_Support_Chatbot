@@ -7,18 +7,34 @@ import sys
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 import streamlit as st
+import os
 
-nltk.download('punkt')
-nltk.download('wordnet')
+# Define the custom NLTK data directory
+nltk_data_dir = '/mount/src/reliefbuddy-ai_mental_support_chatbot/ReliefBuddy/nltk_data'
+
+# Add the custom NLTK data directory to NLTK's data path
+nltk.data.path.append(nltk_data_dir)
+
+@st.cache_resource
+def download_nltk_data():
+    # Create the custom NLTK data directory if it does not exist
+    os.makedirs(nltk_data_dir, exist_ok=True)
+    nltk.download('punkt', download_dir=nltk_data_dir)
+    nltk.download('wordnet', download_dir=nltk_data_dir)
+    nltk.download('omw-1.4', download_dir=nltk_data_dir)
+    return True
+
+# Download NLTK data if not already present
+download_nltk_data()
 
 sys.stdout.reconfigure(encoding='utf-8')
 
 lemmatizer = WordNetLemmatizer()
-model = load_model('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/chatbot_model.h5')
+model = load_model('/mount/src/reliefbuddy-ai_mental_support_chatbot/ReliefBuddy/chatbot_model.h5')
 
-intents = json.loads(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/intents.json', encoding='utf-8').read())
-words = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/words.pkl', 'rb'))
-classes = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/classes.pkl', 'rb'))
+intents = json.loads(open('/mount/src/reliefbuddy-ai_mental_support_chatbot/ReliefBuddy/intents.json', encoding='utf-8').read())
+words = pickle.load(open('/mount/src/reliefbuddy-ai_mental_support_chatbot/ReliefBuddy/words.pkl', 'rb'))
+classes = pickle.load(open('/mount/src/reliefbuddy-ai_mental_support_chatbot/ReliefBuddy/classes.pkl', 'rb'))
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
