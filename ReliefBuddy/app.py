@@ -11,10 +11,11 @@ import streamlit as st
 sys.stdout.reconfigure(encoding='utf-8')
 
 lemmatizer = WordNetLemmatizer()
-model = load_model('chatbot_model.h5')
-intents = json.loads(open('intents.json', encoding='utf-8').read())
-words = pickle.load(open('words.pkl', 'rb'))
-classes = pickle.load(open('classes.pkl', 'rb'))
+model = load_model('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/chatbot_model.h5')
+
+intents = json.loads(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/intents.json', encoding='utf-8').read())
+words = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/words.pkl', 'rb'))
+classes = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/classes.pkl', 'rb'))
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
