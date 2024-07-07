@@ -70,8 +70,8 @@ def main():
     user_input = st.text_input("You: ", "")
 
     if user_input:
-        intents = predict_class(user_input)
-        response = get_response(intents, intents)
+        predicted_intents = predict_class(user_input)
+        response = get_response(predicted_intents, intents)
         st.text_area("ReliefBuddy:", response, height=200)
 
 if __name__ == "__main__":
