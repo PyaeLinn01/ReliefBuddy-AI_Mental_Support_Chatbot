@@ -14,7 +14,7 @@ nltk.download('wordnet')
 sys.stdout.reconfigure(encoding='utf-8')
 
 lemmatizer = WordNetLemmatizer()
-model = load_model('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/chatbot_model.h5')
+model = load_model('chatbot_model.h5')
 
 intents = json.loads(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/intents.json', encoding='utf-8').read())
 words = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/words.pkl', 'rb'))
