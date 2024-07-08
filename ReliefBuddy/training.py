@@ -7,6 +7,7 @@ import tensorflow as tf
 import nltk
 from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
+import os
 
 # Set default encoding to UTF-8
 sys.stdout.reconfigure(encoding='utf-8')
@@ -15,10 +16,17 @@ sys.stdout.reconfigure(encoding='utf-8')
 nltk.download('punkt')
 nltk.download('wordnet')
 
+nltk.data.path.append('D:/nltk_data')
+
 lemmatizer = WordNetLemmatizer()
 
+# Get the current directory of the script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Load intents JSON file
-intents = json.loads(open('intents.json', encoding='utf-8').read())
+intents_file = os.path.join(current_dir, 'intents.json')
+with open(intents_file, encoding='utf-8') as file:
+    intents = json.load(file)
 
 words = []
 classes = []
@@ -40,8 +48,8 @@ words = sorted(set(words))
 classes = sorted(set(classes))
 
 # Save words and classes for future use
-pickle.dump(words, open('words.pkl', 'wb'))
-pickle.dump(classes, open('classes.pkl', 'wb'))
+pickle.dump(words, open(os.path.join(current_dir, 'words.pkl'), 'wb'))
+pickle.dump(classes, open(os.path.join(current_dir, 'classes.pkl'), 'wb'))
 
 training = []
 outputEmpty = [0] * len(classes)
@@ -85,6 +93,6 @@ early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5
 
 # Train the model
 history = model.fit(trainX, trainY, epochs=200, batch_size=5, validation_data=(valX, valY), callbacks=[early_stopping], verbose=1)
-model.save('chatbot_model.h5')
+model.save(os.path.join(current_dir, 'chatbot_model.h5'))
 
 print('Done')
