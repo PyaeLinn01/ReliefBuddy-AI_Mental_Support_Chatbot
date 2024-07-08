@@ -7,6 +7,7 @@ import sys
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 import streamlit as st
+import os
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -14,11 +15,13 @@ nltk.download('wordnet')
 sys.stdout.reconfigure(encoding='utf-8')
 
 lemmatizer = WordNetLemmatizer()
-model = load_model('chatbot_model.h5')
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
-intents = json.loads(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/intents.json', encoding='utf-8').read())
-words = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/words.pkl', 'rb'))
-classes = pickle.load(open('/workspaces/ReliefBuddy-AI_Mental_Support_Chatbot/ReliefBuddy/classes.pkl', 'rb'))
+model = load_model(os.path.join(current_dir, 'chatbot_model.h5'))
+with open(os.path.join(current_dir, 'intents.json'), encoding='utf-8') as file:
+    intents = json.load(file)
+words = pickle.load(open(os.path.join(current_dir, 'words.pkl'), 'rb'))
+classes = pickle.load(open(os.path.join(current_dir, 'classes.pkl'), 'rb'))
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
