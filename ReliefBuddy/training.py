@@ -12,11 +12,8 @@ from sklearn.model_selection import train_test_split
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Ensure you have the necessary NLTK data
-#nltk.download('punkt')
-#nltk.download('wordnet')
-#nltk.download('omw-1.4')
-
-nltk.data.path.append('D:/nltk_data')
+nltk.download('punkt')
+nltk.download('wordnet')
 
 lemmatizer = WordNetLemmatizer()
 
@@ -71,15 +68,15 @@ trainY = training[:, len(words):]
 trainX, valX, trainY, valY = train_test_split(trainX, trainY, test_size=0.2, random_state=42)
 
 # Define and compile the model
-model = tf.keras.Sequential()
-model.add(tf.keras.layers.Input(shape=(len(trainX[0]),)))
-model.add(tf.keras.layers.Dense(128, activation='relu'))
-model.add(tf.keras.layers.Dropout(0.5))
-model.add(tf.keras.layers.Dense(64, activation='relu'))
-model.add(tf.keras.layers.Dropout(0.5))
-model.add(tf.keras.layers.Dense(len(trainY[0]), activation='softmax'))
+model = tf.keras.Sequential([
+    tf.keras.layers.Input(shape=(len(trainX[0]),)),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(len(trainY[0]), activation='softmax')
+])
 
-# Try using Adam optimizer
 adam = tf.keras.optimizers.Adam(learning_rate=0.001)
 model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
 
