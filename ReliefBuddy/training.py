@@ -15,6 +15,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 # Ensure you have the necessary NLTK data
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 nltk.data.path.append('D:/nltk_data')
 
