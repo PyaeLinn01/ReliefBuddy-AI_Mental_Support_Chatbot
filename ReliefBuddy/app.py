@@ -17,7 +17,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 lemmatizer = WordNetLemmatizer()
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-model = load_model(os.path.join(current_dir, 'chatbot_model.h5'))
+model = load_model(os.path.join(current_dir, 'chatbot_model.keras'))
 with open(os.path.join(current_dir, 'intents.json'), encoding='utf-8') as file:
     intents = json.load(file)
 words = pickle.load(open(os.path.join(current_dir, 'words.pkl'), 'rb'))
