@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 import nltk
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import wordnet
+from nltk.corpus import wordnet, stopwords
 from sklearn.model_selection import train_test_split
 import os
 import re
@@ -19,8 +19,10 @@ nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
 
 lemmatizer = WordNetLemmatizer()
+stop_words = set(stopwords.words('english'))
 
 # Get the current directory of the script
 current_dir = os.path.dirname(os.path.abspath(__file__))
