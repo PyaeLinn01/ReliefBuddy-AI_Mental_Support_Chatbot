@@ -5,16 +5,22 @@ import numpy as np
 import nltk
 import sys
 from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet, stopwords
 from tensorflow.keras.models import load_model
 import streamlit as st
 import os
 
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
 
 sys.stdout.reconfigure(encoding='utf-8')
 
 lemmatizer = WordNetLemmatizer()
+stop_words = set(stopwords.words('english'))
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 model = load_model(os.path.join(current_dir, 'chatbot_model.keras'))
