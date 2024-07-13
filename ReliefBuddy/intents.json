@@ -20,7 +20,7 @@
       
       {
         "tag": "feelings",
-        "patterns": ["I'm feeling down", "I'm not feeling well", "I am not happy","I feel down", "I feel sad", "I am sad","I'm always sad"],
+        "patterns": ["I'm feeling down", "I'm not feeling well", "I am not happy","I am unhappy","I feel unhappy","I feel down", "I feel sad", "I am sad","I'm always sad"],
         "responses": ["I'm sorry to hear that you're feeling this way.Talk to Someone: Sometimes sharing your feelings with a friend, family member, or therapist can provide relief and perspective","I'm sorry to hear that you're feeling this way. Engage in an Activity You Enjoy: Doing something you love, whether it is a hobby, sport, or creative activity, can improve your mood.","I'm sorry to hear that you're feeling this way.Doing Exercise: Physical activity can boost endorphins and improve your overall mood.","I'm sorry to hear that you're feeling this way. Practice Mindfulness or Meditation: Techniques such as deep breathing, meditation, or mindfulness can help reduce stress and improve your emotional state.","I'm sorry to hear that you're feeling this way. Write it Down: Journaling your thoughts and feelings can be a great way to process what you're going through.","I'm sorry to hear that you're feeling this way.Self-care: Treat yourself with kindness and engage in activities that make you feel good, whether it's a bath, reading a book, or watching a favorite show.","I'm sorry to hear that you're feeling this way.Please share more about what's making you feel down, and I can offer more specific advice or support.",
                       "I'm sorry to hear that you're feeling this way. Talking to someone or engaging in an activity you enjoy might help. If you want, you can share more about what's making you feel down."
           
@@ -51,23 +51,24 @@
       },
       {
         "tag": "anxiety",
-        "patterns": ["I'm feeling anxious", "I'm anxious", "I have anxiety", "I'm always worried", "How to deal with anxiety","I feel so anxious.", "I'm so anxious because of "],
+        "patterns": ["I'm feeling anxious", "I'm anxious", "I have anxiety", "I'm always worried", "How to deal with anxiety", "I feel so anxious.", "I'm so anxious because of "],
         "responses": [
-          "Anxiety can be really tough. Have you tried grounding techniques, like focusing on your senses?",
-          "Sometimes, taking a few deep breaths can help calm anxiety. Would you like to try a breathing exercise with me?",
-          "It's important to identify what's triggering your anxiety. Do you know what might be causing it right now?"
+            "Anxiety can be really tough. Try grounding techniques, like focusing on your senses.",
+            "Sometimes, taking a few deep breaths can help calm anxiety. Consider doing a breathing exercise.",
+            "Identifying what's triggering your anxiety is important. Finding the cause can help manage it."
         ],
         "context_set": ""
-      },
+    },
+    
       
       
       {
         "tag": "self_care",
         "patterns": ["What is self-care?", "How to practice self-care", "Tips for self-care", "I need self-care ideas"],
         "responses": [
-          "Self-care is all about taking time to care for your mental, emotional, and physical health. What activities make you feel relaxed and happy?",
-          "Self-care can include things like reading a book, taking a bath, or spending time in nature. What sounds appealing to you?",
-          "It's important to make time for yourself. Have you tried setting aside a few minutes each day just for you?"
+          "Self-care is all about taking time to care for your mental, emotional, and physical health. Do some activities make you feel relaxed and happy.",
+          "Self-care can include things like reading a book, taking a bath, or spending time in nature.Do some activities make you feel relaxed.",
+          "It's important to make time for yourself. Try setting aside a few minutes each day just for you."
         ],
         "context_set": ""
       },
@@ -83,11 +84,14 @@
       },
       {
         "tag": "sleep",
-        "patterns": ["I can't sleep", "I cannot sleep","I have trouble sleeping", "How to improve sleep", "Tips for better sleep","I have insominia", "I am suffering from insomnia", "I haven't slept for the last days.", "I can't seem to go to sleep.", "I haven't had proper sleep for the past few days."],
+        "patterns": ["I can't sleep", "I cannot sleep","I have trouble sleeping", "How to improve sleep", "Tips for better sleep","I have insominia", "I am suffering from insomnia", "I haven't slept for the last days.", "I can't seem to go to sleep.", "I haven't had proper sleep for the past few days.","I've been struggling with insomnia. I can't seem to get a good night's sleep.", "I have trouble falling asleep","Is there any good suggestions for me to fall asleep fast?.","Insomnia"],
         "responses": [
           "Sleep is crucial for your well-being. Have you tried establishing a bedtime routine?",
           "Avoiding screens and caffeine before bed can help improve sleep. What does your evening routine look like?",
-          "Sometimes reading a book or listening to calming music can help. Would you like some recommendations?"
+          "Sometimes reading a book or listening to calming music can help. Would you like some recommendations?",
+          "Establish a Consistent Sleep Schedule:Go to bed and wake up at the same time every day, even on weekends.This helps regulate your body's internal clock.",
+          "Create a Relaxing Bedtime Routine:Develop a calming pre-sleep routine, such as reading a book, or practicing gentle yoga or stretching.",
+          "Optimize Your Sleep Environment:Invest in a comfortable mattress and pillows."
         ],
         "context_set": ""
       },
@@ -102,16 +106,7 @@
         ],
         "context_set": ""
       },
-      {
-        "tag": "motivation",
-        "patterns": ["I'm feeling unmotivated", "I need motivation", "How to stay motivated", "Tips for motivation"],
-        "responses": [
-          "Finding motivation can be tough. Setting small, achievable goals can help. What's one small thing you can do today?",
-          "Sometimes taking a break and doing something you enjoy can recharge your motivation. What do you enjoy doing?",
-          "It's okay to have off days. Be kind to yourself and remember that progress takes time."
-        ],
-        "context_set": ""
-      },
+      
       {
         "tag": "coping_mechanisms",
         "patterns": ["What are good coping mechanisms?", "How to cope with stress", "Coping strategies", "Healthy ways to cope"],
@@ -124,7 +119,7 @@
       },
       {
         "tag": "loneliness",
-        "patterns": ["I'm feeling lonely", "I have no one to talk to", "I'm always alone", "How to deal with loneliness","I feel so lonely","I feel lonely","I feel empty","I don't have anyone"],
+        "patterns": ["I'm feeling lonely","I am lonely", "I have no one to talk to", "I'm always alone", "How to deal with loneliness","I feel so lonely","I feel lonely","I feel empty","I don't have anyone"],
         "responses": [
           "Loneliness can be very difficult. Reaching out to friends or joining a community group can help.",
           "Sometimes volunteering or participating in hobbies can help build connections. It's important to remember that you're not alone.",
@@ -221,7 +216,7 @@
           "context_set": ""
         },
       {"tag": "happy",
-          "patterns": ["I feel great today.", "I am happy.", "I feel happy.", "I'm good.", "cheerful", "I'm fine", "I feel ok"],
+          "patterns": ["I feel great today.", "I am happy.","I am very happy.", "I feel happy.", "I'm good.", "cheerful", "I'm fine", "I feel ok"],
           "responses": ["That's geat to hear. I'm glad you're feeling this way.", "Oh i see. That's great.", "Did something happen which made you feel this way?"]
       },
       {"tag": "casual",
@@ -235,12 +230,33 @@
           "responses": ["Talking about something really helps. If you're not ready to open up then that's ok. Just know that i'm here for you, whenever you need me.", "I want to help you. I really do. But in order for me to help you, you're gonna have to talk to me.", "I'm here to listen to you and help you vent. So please talk to me.","You can talk to me without fear of judgement."]
       },
       
-      {"tag": "scared",
-          "patterns": ["I'm scared", "That sounds awful. What do i do?", "No i don't want to feel this way", "I am scared for myself"],
-          "responses": ["It's only natural to feel this way. I'm here for you.", "It'll all be okay. This feeling is only momentary.", "I understand how you feel. Don't put yourself down because of it."]
-      },
+      {
+        "tag": "scared",
+        "patterns": [
+            "I'm scared",
+            "I am scared for myself",
+            "I'm feeling scared",
+            "I feel frightened",
+            "I am terrified",
+            "I am afraid",
+            "I feel so scared",
+            "I feel unsafe",
+            "I'm scared about the future",
+            "I'm really scared right now"
+        ],
+        "responses": [
+            "It's only natural to feel this way. I'm here for you, and it's okay to be scared.",
+            "It'll all be okay. This feeling is only momentary, and you are stronger than you think.",
+            "I understand how you feel. Don't put yourself down because of it, and remember that you are not alone.",
+            "Feeling scared is a normal response to certain situations. Take a deep breath and know that you have support.",
+            "It's important to acknowledge your feelings. Give yourself permission to feel scared, but also remember that you have the strength to overcome it.",
+            "When you feel scared, try to find a safe space or someone you trust to talk to. You're not alone in this."
+        ],
+        "context_set": ""
+    },
+    
       {"tag": "death",
-          "patterns": ["My mom died", "My brother died", "My dad passed away", "My sister passed away", "Someone in my family died", "My friend passed away"],
+          "patterns": ["My mom died", "My brother died", "My dad passed away", "My mom passed away","My sister passed away", "My brother passed away","Someone in my family died", "My friend passed away"],
           "responses": ["I'm sorry to hear that. If you want to talk about it. I'm here.", "I am really sorry to hear that. I am here to help you with grief, anxiety and anything else you may feel at this time.", "My condolences. I'm here if you need to talk."]
       },
       {"tag": "understand",
@@ -320,22 +336,7 @@
               "Here are some tips for exam preparation:\n\n1. **Create a Study Schedule:** Plan your study time well in advance and stick to it.\n2. **Understand the Material:** Focus on understanding concepts rather than just memorizing facts.\n3. **Practice Past Papers:** Practicing previous exams can give you a good idea of what to expect.\n4. **Take Regular Breaks:** Study in short, focused bursts and take breaks to rest your mind.\n5. **Stay Organized:** Keep your notes and study materials organized for easy access.\n6. **Healthy Lifestyle:** Ensure you get enough sleep, eat healthily, and exercise regularly.\n7. **Stay Positive:** Keep a positive attitude and believe in your abilities."
           ]
       },
-      
-      {
-          "tag": "learn-mental_health",
-          "patterns": [
-              "I want to learn about mental health.",
-              "I want to learn more about mental health.",
-              "I'm interested in learning about mental health."
-          ],
-          "responses": [
-              "Mental health is a crucial part of our overall well-being. It includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. Mental health influences our daily living, relationships, and physical health.",
-              "It's great that you're interested in mental health! Understanding mental health can help in maintaining a balanced life. Mental health influences our daily living, relationships, and physical health. ",
-              "Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices."
-          ]
-      },
-      
-      
+   
       {"tag": "no-approach",
           "patterns": ["I guess not. All I can think about are my exams.", "not really", "i guess not"],
           "responses": ["That's no problem. I can see why you'd be stressed out about that. I can suggest you some tips to alleviate this issue. Would you like to learn more about that?"]
@@ -344,10 +345,36 @@
               "patterns": ["ok sure. i would like to learn more about it.", "yes, i would like to learn more about it.", "i would like to learn more about it."],
           "responses": ["So first I would suggest you to give yourself a break. Thinking more and more about the problem definitely does not help in solving it. You'll just end up overwhelming yourself."]
       },
-      {"tag": "user-agree",
-          "patterns": ["yeah you're right. i deserve a break.", "Yeah you're absolutely right about that"],
-          "responses": ["Next, I would suggest you to practice meditation. Meditation can produce a deep state of relaxation and a tranquil mind."]
-      },
+      {
+        "tag": "user-agree",
+        "patterns": [
+            "You're right. I deserve a break.",
+            "You're absolutely right about that.",
+            "I agree with you.",
+            "You're correct.",
+            "I think you're right.",
+            "I completely agree.",
+            "You are right.",
+            "That's true.",
+            "I believe you're right.",
+            "I concur with what you said."
+        ],
+        "responses": [
+            "I'm glad you agree.",
+            "It's good to hear that you agree.",
+            "Thank you for agreeing.",
+            "I'm happy we are on the same page.",
+            "It's great to see that we think alike.",
+            "I'm pleased that you agree with me.",
+            "I'm glad you see it that way too.",
+            "I'm happy you feel the same way.",
+            "Thank you for understanding.",
+            "I appreciate your agreement."
+        ],
+        "context_set": ""
+    },
+    
+    
       {"tag": "meditation",
           "patterns": ["hmmm that sounds like it could be useful to me.", "That sounds useful."],
           "responses": ["Focus all your attention on your breathing. Concentrate on feeling and listening as you inhale and exhale through your nostrils. Breathe deeply and slowly. When your attention wanders, gently return your focus to your breathing."]
@@ -365,28 +392,23 @@
           "responses": ["Sure. What can I do to help?", "Okay what do you need advice on?"]
       },
       
-      
+      {
+        "tag": "learn-mental_health",
+        "patterns": [
+            "I want to learn about mental health.",
+            "I want to learn more about mental health.",
+            "I'm interested in learning about mental health.",
+            "Why is mental health important?", "What is the importance of mental health?",
+            "What is mental health?", "Define Mental Health"
+        ],
+        "responses": [
+            "Mental health is a crucial part of our overall well-being. It includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. Mental health influences our daily living, relationships, and physical health.",
+            "It's great that you're interested in mental health! Understanding mental health can help in maintaining a balanced life. Mental health influences our daily living, relationships, and physical health. ",
+            "Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices."
+        ]
+    },
   
-      {"tag": "mental-health-fact",
-          "patterns": ["Tell me a fact about mental health", "Tell me another fact about mental health"],
-          "responses": ["According to a UNICEF report, One in seven Indians between 15-24 years of age feels depressed", "1 in 5 young people (age 13-18) has or will develop a mental illness in their lifetime.", "Depression is the leading cause of disability worldwide."]
-      },
-      {"tag": "fact-1",
-          "patterns": ["What is mental health?", "Define Mental Health"],
-          "responses": ["Mental health is a state of well-being in which the individual realizes his or her own abilities, can cope with the normal stresses of life, can work productively and fruitfully, and is able to make a contribution to his or her community", "Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make choices."]
-      },
-      {"tag": "fact-2",
-          "patterns": ["Why is mental health important?", "What is the importance of mental health?"],
-          "responses": ["Maintaining mental health is crucial to stabilizing constructive behaviors, emotions, and thoughts. Focusing on mental health care can increase productivity, enhance our self-image, and improve relationships."]
-      },
-      {"tag": "fact-3",
-          "patterns": ["What is Depression?", "Define Depression"],
-          "responses": ["A mental health disorder characterised by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life."]
-      },
-      {"tag": "fact-5",
-          "patterns": ["How do i know if i have Depression?", "Am i depressed?", "Am i suffering from depression?", "Am i mentally ill?"],
-          "responses": ["For a diagnosis of depression, a person needs to have experienced low mood or loss of interest or pleasure in life for at least 2 weeks. Also, they will have experienced the following symptoms: feelings of sadness, hopelessness, or irritability nearly every day."]
-      },
+      
       {"tag": "fact-6",
           "patterns": ["What is a therapist?", "What does a therapist do?"],
           "responses": ["A therapist is a broad designation that refers to professionals who are trained to provide treatment and rehabilitation. The term is often applied to psychologists, but it can include others who provide a variety of services, including social workers, counselors, life coaches, and many others. "]
@@ -396,7 +418,7 @@
           "responses": ["Therapy is a form of treatment that aims to help resolve mental or emotional issues.", "Therapy is a form of treatment that aims to help resolve mental or emotional issues. It is helpful for those with mental health conditions or even everyday life challenges."]
       },
       {"tag": "fact-8",
-          "patterns": ["What does it mean to have a mental illness?"],
+          "patterns": ["What does it mean to have a mental illness?","What is mental illness?"],
           "responses": ["Mental illnesses are health conditions that disrupt a person's thoughts, emotions, relationships, and daily functioning. They are associated with distress and diminished capacity to engage in the ordinary activities of daily life. Mental illnesses fall along a continuum of severity: some are fairly mild and only interfere with some aspects of life, such as certain phobias. On the other end of the spectrum lie serious mental illnesses, which result in major functional impairment and interference with daily life. These include such disorders as major depression, schizophrenia, and bipolar disorder, and may require that the person receives care in a hospital. It is important to know that mental illnesses are medical conditions that have nothing to do with a person's character, intelligence, or willpower. Just as diabetes is a disorder of the pancreas, mental illness is a medical condition due to the brain's biology. Similarly to how one would treat diabetes with medication and insulin, mental illness is treatable with a combination of medication and social support. These treatments are highly effective, with 70-90 percent of individuals receiving treatment experiencing a reduction in symptoms and an improved quality of life. With the proper treatment, it is very possible for a person with mental illness to be independent and successful."]
       },
       {"tag": "fact-9",
@@ -505,33 +527,8 @@
               "No matter what,your parents will always be proud of you and will love you.you will feel much better if you share your feelings with them."
           ]
       },
-      {
-          "tag": "What are the types of depression?",
-          "patterns": [
-              "what are the types of depression?"
-          ],
-          "responses": [
-              "There are many different forms of depression but most common types are.clinical depression,persistent depressive disorder,bipolar disorder,postnatal disorder."
-          ]
-      },
-      {
-          "tag": "i am good for nothing.",
-          "patterns": [
-              "i am good for nothing."
-          ],
-          "responses": [
-              "don't ever think you cannot achieve what you want.you are capable of reaching your goals.here is a quote for you everything you can imagine is real."
-          ]
-      },
-      {
-          "tag": "i am feeling stressed lately",
-          "patterns": [
-              "i am feeling stressed lately"
-          ],
-          "responses": [
-              "my research says that music is the best way to calm yourself.so visit the link and listen to your favourite music.it will definitely cheer you up \"https://www.spotify.com\""
-          ]
-      },
+     
+      
       {
           "tag": "Suicidal_Thoughts",
           "patterns": [
@@ -540,6 +537,7 @@
               "I'm feeling suicidal",
               "I don't want to live",
               "I'm thinking of ending it all",
+              "I want to die",
               "Life is too painful",
               "I can't handle this anymore"
           ],
@@ -562,15 +560,23 @@
               "failure is the stepping stone towards success.never fear failure.your hardwork and determination will help you reach your goal."
           ]
       },
-      {
-          "tag": "what is depression?",
-          "patterns": [
-              "what is depression?"
-          ],
-          "responses": [
-              "depression\u00a0is a mood disorder that causes a persistent feeling of sadness and loss of interest. also called major\u00a0depressive\u00a0disorder or clinical\u00a0depression, it affects how you feel, think and behave and can lead to a variety of emotional and physical problems."
-          ]
-      },
+      {"tag": "fact-3",
+      "patterns": ["What is Depression?", "Define Depression"],
+      "responses": ["Depression\u00a0is a mood disorder that causes a persistent feeling of sadness and loss of interest. also called major\u00a0depressive\u00a0disorder or clinical\u00a0depression, it affects how you feel, think and behave and can lead to a variety of emotional and physical problems.","A mental health disorder characterised by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life."]
+  },
+  {"tag": "fact-5",
+      "patterns": ["How do i know if i have Depression?", "Am i depressed?", "Am i suffering from depression?", "Am i mentally ill?"],
+      "responses": ["For a diagnosis of depression, a person needs to have experienced low mood or loss of interest or pleasure in life for at least 2 weeks. Also, they will have experienced the following symptoms: feelings of sadness, hopelessness, or irritability nearly every day."]
+  },
+  {
+      "tag": "What are the types of depression?",
+      "patterns": [
+          "what are the types of depression?"
+      ],
+      "responses": [
+          "There are many different forms of depression but most common types are.clinical depression,persistent depressive disorder,bipolar disorder,postnatal disorder."
+      ]
+  },     
       {
           "tag": "what are the causes of depression?",
           "patterns": [
@@ -1104,16 +1110,7 @@
           ],
           "context_set": ""
         },
-        {
-          "tag": "Insomnia",
-          "patterns": ["I've been struggling with insomnia. I can't seem to get a good night's sleep.", "I have trouble falling asleep","Is there any good suggestions for me to fall asleep fast?.","Insomnia"],
-          "responses": [
-            "Establish a Consistent Sleep Schedule:Go to bed and wake up at the same time every day, even on weekends.This helps regulate your body's internal clock.",
-            "Create a Relaxing Bedtime Routine:Develop a calming pre-sleep routine, such as reading a book, or practicing gentle yoga or stretching.",
-            "Optimize Your Sleep Environment:Invest in a comfortable mattress and pillows."
-          ],
-          "context_set": ""
-        },
+        
         {
           "tag": "Time management",
           "patterns": ["How do I manage my time efficiently?", " I've been feeling overwhelmed with my schedule. I never seem to have enough time to get everything done..","Time management"],
@@ -1208,20 +1205,7 @@
               "Avoid the bully when possible and stay with friends."
           ]
       },
-      {
-          "tag": "mental_health",
-          "patterns": [
-              "I'm feeling depressed",
-              "I have anxiety",
-              "Mental health tips",
-              "I'm feeling overwhelmed"
-          ],
-          "responses": [
-              "It's important to talk to someone you trust about how you're feeling.",
-              "Consider speaking with a counselor or mental health professional.",
-              "Practice self-care and make time for activities you enjoy."
-          ]
-      },
+      
       {
           "tag": "financial_struggles",
           "patterns": [
@@ -1265,19 +1249,19 @@
           ]
       },
       {
-          "tag": "motivation",
-          "patterns": [
-              "I lack motivation",
-              "How to stay motivated?",
-              "I feel unmotivated",
-              "Tips for staying motivated"
-          ],
-          "responses": [
-              "Set clear, achievable goals for yourself.",
-              "Break tasks into smaller steps and celebrate your progress.",
-              "Surround yourself with positive influences and stay focused on your long-term objectives."
-          ]
+        "tag": "motivation",
+        "patterns": ["I feel unmotivated","I lack motivation","I'm feeling unmotivated", "I need motivation", "How to stay motivated", "Tips for motivation","Tips for staying motivated"],
+        "responses": [
+          "Finding motivation can be tough. Setting small, achievable goals can help. What's one small thing you can do today?",
+          "Sometimes taking a break and doing something you enjoy can recharge your motivation. What do you enjoy doing?",
+          "It's okay to have off days. Be kind to yourself and remember that progress takes time.",
+          "Set clear, achievable goals for yourself.",
+          "Break tasks into smaller steps and celebrate your progress.",
+          "Surround yourself with positive influences and stay focused on your long-term objectives."
+        ],
+        "context_set": ""
       },
+      
       {
           "tag": "homesickness",
           "patterns": [
