@@ -156,7 +156,7 @@ model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accurac
 early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
 # Train the model
-history = model.fit(train_x, train_y, epochs=200, batch_size=5, validation_data=(val_x, val_y), callbacks=[early_stopping], verbose=1)
+history = model.fit(train_x, train_y, epochs=500, batch_size=1024, validation_data=(val_x, val_y), callbacks=[early_stopping], verbose=1)
 model.save(os.path.join(current_dir, 'chatbot_model.keras'))  # Save the model in Keras format
 
 print('Done')
