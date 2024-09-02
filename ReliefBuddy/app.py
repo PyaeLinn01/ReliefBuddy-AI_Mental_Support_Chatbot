@@ -14,6 +14,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Ensure necessary NLTK data is downloaded
+nltk.download('punkt_tab')
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
