@@ -12,9 +12,13 @@ import os
 from datasets import load_dataset
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import speech_recognition as sr
+import pyttsx3
+
+# Initialize Pyttsx3 for text-to-speech
+engine = pyttsx3.init()
 
 # Ensure necessary NLTK data is downloaded
-nltk.download('punkt_tab')
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
@@ -101,17 +105,42 @@ def get_dataset_response(message):
     best_match_responses = context_response_map[best_match_context]
     return random.choice(best_match_responses)
 
+def recognize_speech():
+    """Recognize speech using the microphone and return as text."""
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        st.info("Listening...")
+        audio = r.listen(source)
+        try:
+            text = r.recognize_google(audio)
+            return text
+        except sr.UnknownValueError:
+            st.error("Google Speech Recognition could not understand audio")
+        except sr.RequestError:
+            st.error("Could not request results from Google Speech Recognition service")
+    return ""
+
+def speak_text(text):
+    """Speak the text using text-to-speech."""
+    engine.say(text)
+    engine.runAndWait()
+
 def main():
     """Streamlit interface for the chatbot."""
     st.title("ReliefBuddy - AI Mental Support Chatbot")
     st.write("Welcome to ReliefBuddy. How can I help you today?")
 
-    user_input = st.text_input("You: ", "")
+    if st.button("Use Microphone"):
+        user_input = recognize_speech()
+        st.write(f"You said: {user_input}")
+    else:
+        user_input = st.text_input("You: ", "")
 
     if user_input:
         predicted_intents = predict_class(user_input)
         response = get_response(predicted_intents, intents, user_input)
         st.text_area("ReliefBuddy:", response, height=200)
+        speak_text(response)
 
 if __name__ == "__main__":
     main()
