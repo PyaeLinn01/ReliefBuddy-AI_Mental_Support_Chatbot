@@ -15,7 +15,7 @@ ReliefBuddy is a chatbot application designed to provide support and assistance 
 
 - Python 3.6 or later
 - pip (Python package installer)
-- Internet connection for API calls
+- Internet connection 
 
 ### Steps
 
