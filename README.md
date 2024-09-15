@@ -52,15 +52,7 @@ ReliefBuddy is a chatbot application designed to provide support and assistance 
     nltk.download('stopwords')
     ```
 
-5. **Set Up API Keys**
-
-    Create a `.env` file in the root directory and add your OpenAI API key:
-
-    ```plaintext
-    OPENAI_API_KEY=your_openai_api_key
-    ```
-
-6. **Prepare Data**
+5. **Prepare Data**
 
     Make sure you have `intents.json`, `words.pkl`, and `classes.pkl` in the root directory. These files should contain the necessary data for training the model and for predictions.
 
