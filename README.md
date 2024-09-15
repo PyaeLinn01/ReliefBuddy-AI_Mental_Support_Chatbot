@@ -1,6 +1,6 @@
 # ReliefBuddy
 
-ReliefBuddy is a chatbot application designed to provide support and assistance to individuals dealing with anxiety and other mental health challenges. The chatbot uses natural language processing (NLP) techniques and integrates with the OpenAI API to provide meaningful and empathetic responses.
+ReliefBuddy is a chatbot application designed to provide support and assistance to individuals dealing with anxiety and other mental health challenges. The chatbot uses natural language processing (NLP) techniques to provide meaningful and empathetic responses.
 
 ## Features
 
